@@ -1,30 +1,30 @@
-import java.util.Arrays;
-
-import javax.swing.event.SwingPropertyChangeSupport;
-
 
 class Solution {
-    public int solution(int[] arr) {
-        int answer = 1;
-
-        Arrays.sort(arr);
+    public int[] solution(int[] lottos, int[] win_nums) {
+      
+        int count = 7; //
+        int result; //
         int i = 0;
-        if( arr.length % 2 == 0){
-            i = arr.length/2;
-            arr[i] += answer;
-        }else {
-            i = arr.length/2;
-            arr[i] += answer;
+        int j;
+        for (i=0; i <lottos.length; i++){
+            for(j=0; j<win_nums.length; j++){
+                if (lottos[i] == win_nums[j]){
+                    count--;
+                }
+            }
         }
-        
-
-
-
-        return answer;
-    }
-    System.out.println(i);
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
+        result = count;
+        for(i= 0; i<lottos.length; i++){
+            if (lottos[i] == 0){
+                result--; 
+            }
+        }
+        if(count == 7){
+            count--;
+        }
+        if(result == 7){
+            result--;
+        }
+        return new int[] {result, count};
     }
 }
